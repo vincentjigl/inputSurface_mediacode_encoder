@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.android.support:versionedparcelable:28.0.0@aar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../env/gradle-5.5/caches/transforms-2/files-2.1/964de7f158ca0233bb977577b6371cfa/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../env/gradle-5.5/caches/transforms-2/files-2.1/964de7f158ca0233bb977577b6371cfa/res" />
+      <root url="file://$PROJECT_DIR$/../../env/gradle-5.5/caches/transforms-2/files-2.1/964de7f158ca0233bb977577b6371cfa/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2575387146c47c0210988bfc1a5e93fc/res" />
+      <root url="file://$PROJECT_DIR$/../../env/gradle-5.5/caches/transforms-2/files-2.1/b2361cc354c5da146786d5223fa22a3b/res" />
+      <root url="file://$PROJECT_DIR$/../../env/gradle-5.5/caches/transforms-2/files-2.1/b2361cc354c5da146786d5223fa22a3b/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/../../env/gradle-5.5/caches/transforms-2/files-2.1/b2361cc354c5da146786d5223fa22a3b/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
