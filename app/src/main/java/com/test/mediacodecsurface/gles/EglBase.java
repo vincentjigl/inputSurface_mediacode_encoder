@@ -83,11 +83,8 @@ public abstract class EglBase {
   // Create a new context with the specified config attributes, sharing data with sharedContext.
   // |sharedContext| can be null.
   public static EglBase create(Context sharedContext, int[] configAttributes) {
-    return (EglBase14.isEGL14Supported()
-               && (sharedContext == null || sharedContext instanceof EglBase14.Context))
-        ? new EglBase14((EglBase14.Context) sharedContext, configAttributes)
-        : new EglBase10((EglBase10.Context) sharedContext, configAttributes);
-  }
+    return new EglBase14((EglBase14.Context) sharedContext, configAttributes);
+   }
 
   public static EglBase create() {
     return create(null, CONFIG_PLAIN);

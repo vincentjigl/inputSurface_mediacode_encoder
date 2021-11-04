@@ -249,9 +249,9 @@ public final class EglBase14 extends EglBase {
     if (sharedContext != null && sharedContext.egl14Context == EGL14.EGL_NO_CONTEXT) {
       throw new RuntimeException("Invalid sharedContext");
     }
+
     int[] contextAttributes = {EGL14.EGL_CONTEXT_CLIENT_VERSION, 2, EGL14.EGL_NONE};
-    EGLContext rootContext =
-        sharedContext == null ? EGL14.EGL_NO_CONTEXT : sharedContext.egl14Context;
+    EGLContext rootContext = sharedContext == null ? EGL14.EGL_NO_CONTEXT : sharedContext.egl14Context;
     final EGLContext eglContext;
     synchronized (EglBase.lock) {
       eglContext = EGL14.eglCreateContext(eglDisplay, eglConfig, rootContext, contextAttributes, 0);
