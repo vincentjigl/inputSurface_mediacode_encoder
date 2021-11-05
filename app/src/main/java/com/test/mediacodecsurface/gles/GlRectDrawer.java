@@ -121,7 +121,8 @@ public class GlRectDrawer implements RendererCommon.GlDrawer {
     // updateTexImage() may be called from another thread in another EGL context, so we need to
     // bind/unbind the texture in each draw call so that GLES understads it's a new texture.
     GLES20.glBindTexture(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, oesTextureId);
-    drawRectangle(viewportX, viewportY, viewportWidth, viewportHeight);
+    GLES20.glViewport(viewportX, viewportY, viewportWidth, viewportHeight);
+    GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP, 0, 4);
     GLES20.glBindTexture(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, 0);
   }
 
@@ -135,7 +136,8 @@ public class GlRectDrawer implements RendererCommon.GlDrawer {
     prepareShader(RGB_FRAGMENT_SHADER_STRING, texMatrix);
     GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
     GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, textureId);
-    drawRectangle(viewportX, viewportY, viewportWidth, viewportHeight);
+    GLES20.glViewport(viewportX, viewportY, viewportWidth, viewportHeight);
+    GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP, 0, 4);
     // Unbind the texture as a precaution.
     GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, 0);
   }
@@ -153,18 +155,13 @@ public class GlRectDrawer implements RendererCommon.GlDrawer {
       GLES20.glActiveTexture(GLES20.GL_TEXTURE0 + i);
       GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, yuvTextures[i]);
     }
-    drawRectangle(viewportX, viewportY, viewportWidth, viewportHeight);
+    GLES20.glViewport(viewportX, viewportY, viewportWidth, viewportHeight);
+    GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP, 0, 4);
     // Unbind the textures as a precaution..
     for (int i = 0; i < 3; ++i) {
       GLES20.glActiveTexture(GLES20.GL_TEXTURE0 + i);
       GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, 0);
     }
-  }
-
-  private void drawRectangle(int x, int y, int width, int height) {
-    // Draw quad.
-    GLES20.glViewport(x, y, width, height);
-    GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP, 0, 4);
   }
 
   private void prepareShader(String fragmentShader, float[] texMatrix) {

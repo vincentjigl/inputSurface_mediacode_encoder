@@ -209,9 +209,8 @@ public class MediaCodecEncode {
 
                     GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
                     captureDrawer.drawRgb(textureId, mCaptureMatrix, width, height,
-                            0, 0,
-                            mCaptureWidth, mCaptureHeight);
-                    ((EglBase14) captureEglBase).swapBuffers(timestamp_ns);
+                            0, 0, mCaptureWidth, mCaptureHeight);
+                    ((EglBase14) captureEglBase).swapBuffers(timestamp_ns);//surfaceTexture surface-->medicodec encode surface
 
                     output();
                     captureEglBase.detachCurrent();

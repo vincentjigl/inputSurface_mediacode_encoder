@@ -109,6 +109,7 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
 
     @Override
     public void onFrameAvailable(SurfaceTexture surfaceTexture) {
+        //receivew camera preview dataTimestampCallback data
         Log.i(TAG, "onFrameAvailable" + Thread.currentThread().getName());
         mDummyContext.makeCurrent();
         surfaceTexture.updateTexImage();
@@ -171,7 +172,7 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
             GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
             previewDrawer.drawRgb(textureId, mPreviewMatrix, (int) width, (int) height,
                     0, 0, scaleWidth, scaleHeight);
-            previewEglBase.swapBuffers();
+            previewEglBase.swapBuffers();//surfaceTexture surface --> surfaceView surface
             previewEglBase.detachCurrent();
         } catch (RuntimeException e) {
             e.printStackTrace();
@@ -186,6 +187,7 @@ public class MySurfaceView extends SurfaceView implements SurfaceHolder.Callback
         mViewWidth = 1280;//getWidth();
         mViewHeight = 720;//getHeight();
         try {
+            //surfaceView surface
             previewEglBase.createSurface(getHolder().getSurface());
         } catch (RuntimeException e) {
             e.printStackTrace();
